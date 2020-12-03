@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace MoviesApp.Models
 {
@@ -20,13 +18,5 @@ namespace MoviesApp.Models
 
         public DateTime Birthday { get; set; }
 
-        public Actor()
-        {
-            //Id?
-            Name = "";
-            LastName = "";
-            //Birthday?
-
-        }
     }
 }
