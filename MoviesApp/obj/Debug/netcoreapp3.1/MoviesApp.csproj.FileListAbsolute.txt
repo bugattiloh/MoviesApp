@@ -82,3 +82,8 @@ C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\sta
 C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\MoviesApp.dll
 C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\MoviesApp.pdb
 C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\MoviesApp.genruntimeconfig.cache
+C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\Razor\Views\Actors\Index.cshtml.g.cs
+C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\Razor\Views\Actors\Create.cshtml.g.cs
+C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\Razor\Views\Actors\Delete.cshtml.g.cs
+C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\Razor\Views\Actors\Details.cshtml.g.cs
+C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\Razor\Views\Actors\Edit.cshtml.g.cs
