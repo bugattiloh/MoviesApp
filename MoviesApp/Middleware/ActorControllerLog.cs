@@ -18,7 +18,7 @@ namespace MoviesApp.Middleware
 
         public async Task Invoke(HttpContext httpContext, ILogger<ActorControllerLog> logger)
         {
-            if (httpContext.Request.Path.Value.ToLower().Contains("api/actor"))
+            if (httpContext.Request.Path.Value.ToLower().Contains("actor"))
             {
                 logger.LogTrace($"Actor => request:{httpContext.Request.Path}  Method: {httpContext.Request.Path}");
             }
