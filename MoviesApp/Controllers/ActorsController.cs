@@ -27,8 +27,8 @@ namespace MoviesApp.Controllers
         // GET: Actors
         public IActionResult Index()
         {
-            var actors = _mapper.Map<IEnumerable<Actor>, IEnumerable<ActorViewModel>>(_context.Actor.ToList())
-             return View(actors);
+            var actors = _mapper.Map<IEnumerable<Actor>, IEnumerable<ActorViewModel>>(_context.Actor.ToList());
+            return View(actors);
 
         }
 
@@ -98,10 +98,12 @@ namespace MoviesApp.Controllers
             {
                 try
                 {
-                    var actor = _mapper.Map<Actor>(editModel);
+                    var actor = _mapper.Map<EditActorViewModel, Actor>(editModel);
+                    actor.Id = id;
 
                     _context.Update(actor);
                     _context.SaveChanges();
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -129,7 +131,7 @@ namespace MoviesApp.Controllers
                 return NotFound();
             }
 
-            var deleteModel = _mapper.Map<Actor, DeleteActorViewModel>(_context.Actor.FirstOrDefault(a => a.Id == id);
+            var deleteModel = _mapper.Map<Actor, DeleteActorViewModel>(_context.Actor.FirstOrDefault(a => a.Id == id));
 
             if (deleteModel == null)
             {

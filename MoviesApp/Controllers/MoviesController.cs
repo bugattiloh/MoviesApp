@@ -29,7 +29,7 @@ namespace MoviesApp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var movies = _mapper.Map<IEnumerable<Movie>, IOrderedEnumerable<MovieViewModel>>(_context.Movies.ToList());
+            var movies = _mapper.Map<IEnumerable<Movie>, IEnumerable<MovieViewModel>>(_context.Movies.ToList());
             return View(movies);
         }
 
@@ -138,7 +138,7 @@ namespace MoviesApp.Controllers
                 return NotFound();
             }
 
-            var deleteModel = _mapper.Map<DeleteMovieViewModel>(_context.Movies.FirstOrDefault(m => id == id));
+            var deleteModel = _mapper.Map<DeleteMovieViewModel>(_context.Movies.FirstOrDefault(m => m.Id == id));
 
             if (deleteModel == null)
             {
