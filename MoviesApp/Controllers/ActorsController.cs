@@ -1,6 +1,7 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -14,24 +15,21 @@ namespace MoviesApp.Controllers
     {
         private readonly MoviesContext _context;
         private readonly ILogger<ActorsController> _logger;
+        private readonly IMapper _mapper;
 
-        public ActorsController(MoviesContext context, ILogger<ActorsController> logger)
+        public ActorsController(MoviesContext context, ILogger<ActorsController> logger, IMapper mapper)
         {
             _context = context;
-
             _logger = logger;
+            _mapper = mapper;
         }
 
         // GET: Actors
         public IActionResult Index()
         {
-            return View(_context.Actor.Select(a => new ActorViewModel
-            {
-                Id = a.Id,
-                Name = a.Name,
-                LastName = a.LastName,
-                Birthdate = a.Birthday
-            }).ToList());
+            var actors = _mapper.Map<IEnumerable<Actor>, IEnumerable<ActorViewModel>>(_context.Actor.ToList())
+             return View(actors);
+
         }
 
         // GET: Actors/Details/5
@@ -42,14 +40,7 @@ namespace MoviesApp.Controllers
                 return NotFound();
             }
 
-            var viewModel = _context.Actor.Where(a => a.Id == id).Select(a => new ActorViewModel()
-            {
-                Id = a.Id,
-                Name = a.Name,
-                LastName = a.LastName,
-                Birthdate = a.Birthday
-            }).FirstOrDefault();
-
+            var viewModel = _mapper.Map<Actor, ActorViewModel>(_context.Actor.FirstOrDefault(a => a.Id == id));
 
             if (viewModel == null)
             {
@@ -71,12 +62,8 @@ namespace MoviesApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(new Actor
-                {
-                    Name = inputModel.Name,
-                    LastName = inputModel.LastName,
-                    Birthday = inputModel.Birthdate
-                });
+
+                _context.Add(_mapper.Map<InputActorViewModel, Actor>(inputModel));
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -92,12 +79,7 @@ namespace MoviesApp.Controllers
                 return NotFound();
             }
 
-            var editModel = _context.Actor.Where(a => a.Id == id).Select(a => new EditActorViewModel()
-            {
-                Name = a.Name,
-                LastName = a.LastName,
-                Birthdate = a.Birthday
-            }).FirstOrDefault();
+            var editModel = _mapper.Map<Actor, EditActorViewModel>(_context.Actor.FirstOrDefault(a => a.Id == id));
 
             if (editModel == null)
             {
@@ -107,7 +89,7 @@ namespace MoviesApp.Controllers
             return View(editModel);
         }
 
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("Id,Name,Surname,Birthdate")] EditActorViewModel editModel)
@@ -116,13 +98,7 @@ namespace MoviesApp.Controllers
             {
                 try
                 {
-                    var actor = new Actor
-                    {
-                        Id = id,
-                        Name = editModel.Name,
-                        LastName = editModel.LastName,
-                        Birthday = editModel.Birthdate
-                    };
+                    var actor = _mapper.Map<Actor>(editModel);
 
                     _context.Update(actor);
                     _context.SaveChanges();
@@ -153,12 +129,7 @@ namespace MoviesApp.Controllers
                 return NotFound();
             }
 
-            var deleteModel = _context.Actor.Where(a => a.Id == id).Select(a => new DeleteActorViewModel
-            {
-                Name = a.Name,
-                LastName = a.LastName,
-                Birthdate = a.Birthday
-            }).FirstOrDefault();
+            var deleteModel = _mapper.Map<Actor, DeleteActorViewModel>(_context.Actor.FirstOrDefault(a => a.Id == id);
 
             if (deleteModel == null)
             {
