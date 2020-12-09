@@ -16,6 +16,8 @@ namespace MoviesApp.Models
         [MaxLength(128)]
         public string LastName { get; set; }
 
+        [Required]
+        [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
 
     }

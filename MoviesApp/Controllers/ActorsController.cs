@@ -1,13 +1,14 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MoviesApp.Data;
+using MoviesApp.Filters;
 using MoviesApp.Models;
 using MoviesApp.ViewModels;
+
 
 namespace MoviesApp.Controllers
 {
@@ -58,6 +59,7 @@ namespace MoviesApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AgeFilters]
         public IActionResult Create([Bind("Id,Name,LastName,Birthday")] InputActorViewModel inputModel)
         {
             if (ModelState.IsValid)
@@ -92,6 +94,7 @@ namespace MoviesApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AgeFilters]
         public IActionResult Edit(int id, [Bind("Id,Name,Surname,Birthdate")] EditActorViewModel editModel)
         {
             if (ModelState.IsValid)
