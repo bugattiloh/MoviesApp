@@ -54,8 +54,6 @@ C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\bin\Debug\netcoreapp3.1\run
 C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\MoviesApp.csprojAssemblyReference.cache
 C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\MoviesApp.AssemblyInfoInputs.cache
 C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\MoviesApp.AssemblyInfo.cs
-C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\MoviesApp.csproj.CoreCompileInputs.cache
-C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\MoviesApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\MoviesApp.RazorAssemblyInfo.cache
 C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\MoviesApp.RazorAssemblyInfo.cs
 C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\MoviesApp.TagHelpers.input.cache
@@ -87,3 +85,4 @@ C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\Raz
 C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\Razor\Views\Actors\Delete.cshtml.g.cs
 C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\Razor\Views\Actors\Details.cshtml.g.cs
 C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\obj\Debug\netcoreapp3.1\Razor\Views\Actors\Edit.cshtml.g.cs
+C:\Users\1255968\Desktop\prog\C#\MoviesApp\MoviesApp\bin\Debug\netcoreapp3.1\AutoMapper.dll
