@@ -71,7 +71,7 @@ namespace MoviesApp.Data
             {
                 var user = new ApplicationUser { UserName = "admin@example.com", Email = "admin@example.com", FirstName = "Super", LastName = "Admin" };
 
-                IdentityResult result = userManager.CreateAsync(user, "password").Result;
+                IdentityResult result = userManager.CreateAsync(user, "Fap19796").Result;
                 if (result.Succeeded)
                 {
                     userManager.AddToRoleAsync(user, "Admin").Wait();

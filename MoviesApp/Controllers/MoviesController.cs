@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -27,6 +28,7 @@ namespace MoviesApp.Controllers
 
         // GET: Movies
         [HttpGet]
+        [Authorize]
         public IActionResult Index()
         {
             var movies = _mapper.Map<IEnumerable<Movie>, IEnumerable<MovieViewModel>>(_context.Movies.ToList());
@@ -35,6 +37,7 @@ namespace MoviesApp.Controllers
 
         // GET: Movies/Details/5
         [HttpGet]
+        [Authorize]
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -53,6 +56,7 @@ namespace MoviesApp.Controllers
 
         // GET: Movies/Create
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -63,6 +67,7 @@ namespace MoviesApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create([Bind("Title,ReleaseDate,Genre,Price")] InputMovieViewModel inputModel)
         {
             if (ModelState.IsValid)
@@ -75,6 +80,7 @@ namespace MoviesApp.Controllers
 
         [HttpGet]
         // GET: Movies/Edit/5
+        [Authorize(Roles ="Admin")]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -97,6 +103,7 @@ namespace MoviesApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id, [Bind("Title,ReleaseDate,Genre,Price")] EditMovieViewModel editModel)
         {
             if (ModelState.IsValid)
@@ -131,6 +138,7 @@ namespace MoviesApp.Controllers
 
         [HttpGet]
         // GET: Movies/Delete/5
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -151,6 +159,7 @@ namespace MoviesApp.Controllers
         // POST: Movies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteConfirmed(int id)
         {
             var movie = _context.Movies.Find(id);

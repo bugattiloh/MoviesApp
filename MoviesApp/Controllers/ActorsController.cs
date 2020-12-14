@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -26,6 +27,7 @@ namespace MoviesApp.Controllers
         }
 
         // GET: Actors
+        [Authorize]
         public IActionResult Index()
         {
             var actors = _mapper.Map<IEnumerable<Actor>, IEnumerable<ActorViewModel>>(_context.Actor.ToList());
@@ -34,6 +36,7 @@ namespace MoviesApp.Controllers
         }
 
         // GET: Actors/Details/5
+        [Authorize]
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -52,6 +55,7 @@ namespace MoviesApp.Controllers
         }
 
         // GET: Actors/Create
+        [Authorize(Roles ="Admin")]
         public IActionResult Create()
         {
             return View();
@@ -60,6 +64,7 @@ namespace MoviesApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AgeFilters]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create([Bind("Id,Name,LastName,Birthday")] InputActorViewModel inputModel)
         {
             if (ModelState.IsValid)
@@ -74,6 +79,7 @@ namespace MoviesApp.Controllers
         }
 
         // GET: Actors/Edit/5
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -95,6 +101,7 @@ namespace MoviesApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AgeFilters]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id, [Bind("Id,Name,Surname,Birthdate")] EditActorViewModel editModel)
         {
             if (ModelState.IsValid)
@@ -127,6 +134,7 @@ namespace MoviesApp.Controllers
         }
 
         // GET: Actors/Delete/5
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -147,6 +155,7 @@ namespace MoviesApp.Controllers
         // POST: Actors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteConfirmed(int id)
         {
             var actor = _context.Actor.Find(id);

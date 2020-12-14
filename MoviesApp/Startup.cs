@@ -38,13 +38,16 @@ namespace MoviesApp
                 options.UseSqlServer(Configuration.GetConnectionString("MoviesContext")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-             {
-                 options.Password.RequireNonAlphanumeric = false;
-             }).AddEntityFrameworkStores<MoviesContext>().AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
+            {
+                options.Password.RequireNonAlphanumeric = false;
+            })
+                .AddEntityFrameworkStores<MoviesContext>()
+                .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
 
-            services.AddAutoMapper(typeof(Startup));
-            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<MoviesContext>();
             
+            services.AddAutoMapper(typeof(Startup));
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
